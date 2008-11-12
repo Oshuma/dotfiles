@@ -1,0 +1,13 @@
+[user]
+	name = Dale Campbell
+	email = dale@save-state.net
+	signingkey = oshuma@gmail.com
+[color]
+	status = auto
+	diff = auto
+	branch = auto
+	interactive = auto
+[alias]
+	st = status
+	ca = commit -a
+	co = checkout
