@@ -13,9 +13,13 @@ alias ::::='cd ../../../../'
 alias apache_process='ps -ef | grep httpd | grep -v grep | wc -l' # count apache processes
 alias topcpu='ps aux | sort -n -k 2 | tail -10'  # top 10 cpu processes
 alias topmem='ps aux | sort -n -k 3 | tail -10'  # top 10 memory processes
-alias enable_wireshark='sudo chgrp admin /dev/bpf*; sudo chmod g+rw /dev/bpf*'
 # alias sar2='sar -u 2 0'
 # alias sar5='sar -u 5 0'
+
+# OS X Specific
+alias enable_wireshark='sudo chgrp admin /dev/bpf*; sudo chmod g+rw /dev/bpf*'
+alias start_cupsd='sudo launchctl load /System/Library/LaunchDaemons/org.cups.cupsd.plist'
+alias stop_cupsd='sudo launchctl unload /System/Library/LaunchDaemons/org.cups.cupsd.plist'
 
 # Development Aliases
 alias ra='rake'
