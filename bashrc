@@ -17,6 +17,15 @@ alias topmem='ps aux | sort -n -k 3 | tail -10'  # top 10 memory processes
 # alias sar5='sar -u 5 0'
 
 # OS X Specific
+function anonymize {
+	privoxy_dir='/Library/Privoxy'
+	current_dir=`pwd`
+	cd $privoxy_dir &&
+	sudo $privoxy_dir/privoxy --pidfile /var/run/privoxy.pid ./config > /dev/null 2>&1 &&
+	open /Applications/Vidalia.app &&
+	cd $current_dir
+}
+alias stop_privoxy='sh /Library/Privoxy/StopPrivoxy.command'
 alias enable_wireshark='sudo chgrp admin /dev/bpf*; sudo chmod g+rw /dev/bpf*'
 alias start_cupsd='sudo launchctl load /System/Library/LaunchDaemons/org.cups.cupsd.plist'
 alias stop_cupsd='sudo launchctl unload /System/Library/LaunchDaemons/org.cups.cupsd.plist'
