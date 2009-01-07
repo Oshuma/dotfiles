@@ -81,7 +81,7 @@ export LESS='-E -M -R -X'
 # export LESS='-M -R -X'
 export MANPATH="/opt/local/man:$MANPATH"
 export PAGER='less'
-export PATH="/opt/local/bin:/opt/local/sbin:/usr/local/WordNet-3.0/bin:$PATH"
+export PATH="/opt/local/bin:/opt/local/sbin:/usr/local/WordNet-3.0/bin:/usr/games:$PATH"
 # export PS1='\n[\h \u:\w]\$ '
 # Print the title in xterms
 export PROMPT_COMMAND='echo -ne "\033]0;${USER}@${HOSTNAME%%.*}:${PWD/#$HOME/~}\007"'
