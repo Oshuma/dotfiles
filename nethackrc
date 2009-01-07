@@ -8,9 +8,11 @@ OPTIONS=boulder:0
 OPTIONS=DECgraphics
 OPTIONS=suppress_alert:3.4.3
 
-OPTIONS=showexp,showrace,showscore
+OPTIONS=showexp,showscore,time
 
 OPTIONS=name:Oshuma
+
+OPTIONS=pettype:none  # No pet.
 OPTIONS=dogname:Sarge
 OPTIONS=catname:Kamichu
 OPTIONS=horsename:GiddyUp
