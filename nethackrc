@@ -1,4 +1,4 @@
-OPTIONS=windowtype:tty,toptenwin,hilite_pet,!number_pad,hpmon
+OPTIONS=windowtype:tty,toptenwin,hilite_pet,!number_pad
 OPTIONS=fixinv,safe_pet,sortpack,tombstone,color
 OPTIONS=verbose,news,fruit:pussy
 OPTIONS=pickup_types:$
@@ -15,6 +15,10 @@ OPTIONS=dogname:Sarge
 OPTIONS=catname:Kamichu
 OPTIONS=horsename:GiddyUp
 
+# (Not on some systems.)
+# OPTIONS=hpmon
+# OPTIONS=hp_monitor
+
 # Enable this if you want to see your inventory sorted in alphabetical
 # order by item instead of by index letter:
 # OPTIONS=sortloot:full
@@ -23,13 +27,13 @@ OPTIONS=horsename:GiddyUp
 
 #
 # Some sane defaults for menucolor
-#
+# (Not on some systems.)
 
-OPTIONS=menucolors
-MENUCOLOR=" blessed "=green
-MENUCOLOR=" holy "=green
-MENUCOLOR=" uncursed "=yellow
-MENUCOLOR=" cursed "=red
-MENUCOLOR=" unholy "=red
-MENUCOLOR=" cursed .* (being worn)"=orange&underline
+# OPTIONS=menucolors
+# MENUCOLOR=" blessed "=green
+# MENUCOLOR=" holy "=green
+# MENUCOLOR=" uncursed "=yellow
+# MENUCOLOR=" cursed "=red
+# MENUCOLOR=" unholy "=red
+# MENUCOLOR=" cursed .* (being worn)"=orange&underline
 
