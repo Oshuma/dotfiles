@@ -1,38 +1,33 @@
 require 'autotest/redgreen'
 
+FAILURE_IMAGE = '~/Pictures/Icons/autotest/failure.gif'
+PENDING_IMAGE = '~/Pictures/Icons/autotest/pending.gif'
+SUCCESS_IMAGE = '~/Pictures/Icons/autotest/success.gif'
+
 module Autotest::Growl
-  # @@current_directory_name = Dir.pwd.match(/([^\/]+)\z/).to_s
-  # def self.growl(title, msg, pri=0)
-  #   title += " in #{@@current_directory_name}"
-  #   msg   += " at #{Time.now}"
-  #   # system "growlnotify -n autotest #{pri > 0 ? '-s ' : ''} --image /Users/oshuma/Pictures/rails_#{pri > 0 ? 'fail' : 'ok'}.png -p #{pri} -d '#{Dir.pwd}' -m #{msg.inspect} #{title}"
-  #   system "growlnotify -n autotest -p #{pri} -m #{msg.inspect} #{title}"
-  # end
-
-  def self.growl title, msg, pri = 0, img = nil, sticky = false
-    title += " in #{Dir.pwd.split(/\//).last(3).join("/")}"
-    msg += " at #{Time.now.strftime('%Y-%m-%d %H:%M:%S')}"
-    # TODO: parameterize default image
-    img ||= "/Applications/Mail.app/Contents/Resources/Caution.tiff"
-    cmd = "growlnotify -n autotest --image #{img} -p #{pri} -m #{msg.inspect} #{title}"
-    cmd << " --sticky" if sticky
-    system cmd
+  # TODO: Throw most of the arguments into an options hash.
+  def self.growl(title, msg, img, pri=0, stick="", host="localhost")
+    system "growlnotify -n autotest --image #{img} -p #{pri} -H #{host} -m #{msg.inspect} #{title} #{stick}"
   end
 
-  Autotest.add_hook :run do |at|
-    growl 'autotest running', 'Started'
+  def self.quicksilver(message)
+    %x[osascript -e 'tell application "Quicksilver" to show large type "#{message}"']
   end
-  Autotest.add_hook :red do |at|
-    growl 'Tests Failed', "#{at.files_to_test.size} tests failed", 2, nil, true
-  end
-  Autotest.add_hook :green do |at|
-    growl 'Tests Passed', 'Tests passed', -2 if at.tainted
-  end
-  Autotest.add_hook :all_good do |at|
-    growl 'Tests Passed', 'All tests passed', -2 if at.tainted
+
+  Autotest.add_hook :ran_command do |autotest|
+    filtered = autotest.results.grep(/\d+\s.*examples?/)
+    output = filtered.empty? ? '' : filtered.last.slice(/(\d+)\s.*examples?,\s(\d+)\s.*failures?(?:,\s(\d+)\s.*pending)?/)
+    if output =~ /[1-9]\sfailures?/
+      # growl "Test Results", "#{output}", FAILURE_IMAGE
+      quicksilver(output)
+    elsif output =~ /pending/
+      growl "Test Results", "#{output}", PENDING_IMAGE
+    else
+      growl "Test Results", "#{output}", SUCCESS_IMAGE
+    end
   end
 end
 
-Autotest.add_hook :initialize do |please|
-  %w{ .git vendor }.each { |exception| please.add_exception(exception) }
+Autotest.add_hook :initialize do |at|
+	%w{.svn .hg .git vendor}.each {|exception| at.add_exception(exception)}
 end
