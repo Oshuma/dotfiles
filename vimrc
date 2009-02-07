@@ -7,7 +7,8 @@ set backupdir=$HOME/.vim/backups
 helptags $HOME/.vim/doc
 
 set foldmethod=syntax
-set foldlevelstart=1  " On startup, close all but the top-level fold.
+" set foldlevelstart=1   " Close all but the top-level fold.
+set foldlevelstart=99  " All folds open.
 set hidden
 set history=100
 set nocompatible
@@ -31,7 +32,8 @@ set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [POS=%04l,%04v][%p%%]\ [L
 set laststatus=2
 
 " Enable Status Line Menu
-source $VIMRUNTIME/menu.vim
+" source $VIMRUNTIME/menu.vim
+runtime menu.vim  " Does the same thing as above.
 set wildmenu
 set cpo-=<
 set wcm=<C-Z>
@@ -43,7 +45,7 @@ runtime macros/matchit.vim
 " Command to toggle showing of whitespace
 " <Leader>s
 set listchars=tab:>-,trail:.,eol:~
-map <silent> <leader>s :set nolist!<CR>
+map <silent> <Leader>s :set nolist!<CR>
 
 syntax on
 filetype on
@@ -51,7 +53,7 @@ filetype plugin on
 filetype indent on
 
 " Turn off bracket highlighting
-let loaded_matchparen = 1
+" let loaded_matchparen = 1
 
 " Ruby/Rails stuff
 augroup railsfiletypes
@@ -129,14 +131,15 @@ let g:rails_menu=2
 " TagList
 nnoremap <silent> <F4> :TlistToggle<CR>
 let Tlist_GainFocus_On_ToggleOpen=1
-" let Tlist_Close_On_Select=1
+let Tlist_Close_On_Select=1
 let Tlist_Use_Right_Window=1
 let Tlist_WinWidth=35
 let Tlist_Enable_Fold_Column=0
 let Tlist_Inc_Winwidth=0  " Don't auto-resize the vim window.
 
-" FuzzyFinder / FuzzyFinder TextMate
-map <Leader>t :FuzzyFinderBuffer<CR>
+" FuzzyFinder
+map <Leader>t :FuzzyFinderFile<CR>
+map <Leader>b :FuzzyFinderBuffer<CR>
 let g:fuzzy_ignore = "*.log"
 let g:fuzzy_matching_limit = 40
 
