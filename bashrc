@@ -81,7 +81,7 @@ export LESS='-E -M -R -X'
 # export LESS='-M -R -X'
 export MANPATH="/opt/local/man:$MANPATH"
 export PAGER='less'
-export PATH="/opt/local/bin:/opt/local/sbin:/usr/local/WordNet-3.0/bin:/usr/games:$PATH"
+export PATH="/opt/local/bin:/opt/local/sbin:/usr/local/WordNet-3.0/bin:/usr/games:/usr/local/mysql/bin:$PATH"
 # export PS1='\n[\h \u:\w]\$ '
 # Print the title in xterms
 export PROMPT_COMMAND='echo -ne "\033]0;${USER}@${HOSTNAME%%.*}:${PWD/#$HOME/~}\007"'
@@ -117,6 +117,23 @@ export COLOR_LIGHT_GRAY='\[\e[0;37m\]'
 # git shit
 source $HOME/.git-completion.sh
 export PS1='\n[\h \u:\w$(__git_ps1 " (%s)")]\$ ' # show git branch in prompt
+
+function mamp_start {
+  clear
+  echo "Starting Apache..."
+  sudo apachectl start &&
+  cd /usr/local/mysql/ &&
+  echo "Starting MySQL..."
+  sudo ./bin/mysqld_safe
+}
+
+function mamp_stop {
+  echo "Stopping Apache..."
+  sudo apachectl stop &&
+  echo "Stopping MySQL..."
+  sudo mysqladmin shutdown
+  echo "...done."
+}
 
 # This stuff enables tcsh-style directory stacks.
 # alias dirs='dirs -v'

@@ -21,9 +21,9 @@ module Autotest::Growl
       # growl "Test Results", "#{output}", FAILURE_IMAGE
       quicksilver(output)
     elsif output =~ /pending/
-      growl "Test Results", "#{output}", PENDING_IMAGE
+      growl "Pending Tests", "#{output}", PENDING_IMAGE
     else
-      growl "Test Results", "#{output}", SUCCESS_IMAGE
+      growl "All Tests Pass", "#{output}", SUCCESS_IMAGE
     end
   end
 end
