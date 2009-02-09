@@ -145,3 +145,9 @@ let g:fuzzy_matching_limit = 40
 
 " NERD Tree
 map <F2> :NERDTreeToggle<CR>
+
+" MiniBufferExplorer
+map <Leader>m :TMiniBufExplorer<CR>
+let g:miniBufExplUseSingleClick = 1
+let g:miniBufExplMapCTabSwitchWindows = 1
+" let g:miniBufExplModSelTarget = 1
