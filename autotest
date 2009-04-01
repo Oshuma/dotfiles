@@ -6,8 +6,8 @@ SUCCESS_IMAGE = '~/Pictures/Icons/autotest/success.gif'
 
 module Autotest::Growl
   # TODO: Throw most of the arguments into an options hash.
-  def self.growl(title, msg, img, pri=0, stick="", host="localhost")
-    system "growlnotify -n autotest --image #{img} -p #{pri} -H #{host} -m #{msg.inspect} #{title} #{stick}"
+  def self.growl(title, msg, img, pri=0, stick=false, host="localhost")
+    system "growlnotify -n autotest --image #{img} -p #{pri} -H #{host} -m #{msg.inspect} #{ '-s' if stick} #{title}"
   end
 
   def self.quicksilver(message)
@@ -18,8 +18,9 @@ module Autotest::Growl
     filtered = autotest.results.grep(/\d+\s.*examples?/)
     output = filtered.empty? ? '' : filtered.last.slice(/(\d+)\s.*examples?,\s(\d+)\s.*failures?(?:,\s(\d+)\s.*pending)?/)
     if output =~ /[1-9]\sfailures?/
-      # growl "Test Results", "#{output}", FAILURE_IMAGE
-      quicksilver(output)
+      growl "Test Results", "#{output}", FAILURE_IMAGE
+      # growl "Test Results", "#{output}", FAILURE_IMAGE, 0, true
+      # quicksilver(output)
     elsif output =~ /pending/
       growl "Pending Tests", "#{output}", PENDING_IMAGE
     else

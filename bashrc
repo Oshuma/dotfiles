@@ -47,6 +47,7 @@ alias gm='git merge'
 alias gnb=' git co -b' # must pass new branch name
 alias gs='git status'
 alias gt='git tag'
+alias gx='gitx'
 
 # gc      => git checkout master
 # gc bugs => git checkout bugs
@@ -88,7 +89,7 @@ export PROMPT_COMMAND='echo -ne "\033]0;${USER}@${HOSTNAME%%.*}:${PWD/#$HOME/~}\
 
 # Don't save histories to disk.
 export HISTFILE=/dev/null
-export IRB_HISTORY_FILE=/dev/null
+# export IRB_HISTORY_FILE=/dev/null
 export MYSQL_HISTFILE=/dev/null
 
 # Colors

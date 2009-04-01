@@ -25,6 +25,7 @@ set backspace=start,eol,indent
 set expandtab
 set smarttab
 set shiftwidth=2
+set softtabstop=2
 set tabstop=2
 
 " Status line shit.
@@ -68,8 +69,7 @@ augroup END
 " CakePHP syntax highlighting
 augroup cakephpfiletypes
 	autocmd!
-	au! BufRead,BufNewFile *.thtml set filetype=php
-	au! BufRead,BufNewFile *.ctp set filetype=php
+	au! BufRead,BufNewFile *.ctp set filetype=php ai sw=2 sts=2 expandtab
 augroup END
 
 " Template Toolkit
@@ -105,10 +105,10 @@ noremap ` '
 
 " Specific options for Gvim
 if has("gui_running")
-	set background=light
+	set background=dark
 	set mousehide  " Hide mouse after pressing key.
 	set mouse=a    " Mouse in all modes.
-	" let Tlist_Show_Menu=1  " Enable taglist menu in Vim.app
+	let Tlist_Show_Menu=1  " Enable taglist menu in Vim.app
 else
 	set background=dark
 endif
@@ -147,7 +147,7 @@ let g:fuzzy_matching_limit = 40
 map <F2> :NERDTreeToggle<CR>
 
 " MiniBufferExplorer
-map <Leader>m :TMiniBufExplorer<CR>
-let g:miniBufExplUseSingleClick = 1
-let g:miniBufExplMapCTabSwitchWindows = 1
+" map <Leader>m :TMiniBufExplorer<CR>
+" let g:miniBufExplUseSingleClick = 1
+" let g:miniBufExplMapCTabSwitchWindows = 1
 " let g:miniBufExplModSelTarget = 1
