@@ -46,7 +46,7 @@ runtime macros/matchit.vim
 " Command to toggle showing of whitespace
 " <Leader>s
 set listchars=tab:>-,trail:.,eol:~
-map <silent> <Leader>s :set nolist!<CR>
+" map <silent> <Leader>s :set nolist!<CR>
 
 syntax on
 filetype on
@@ -59,7 +59,7 @@ filetype indent on
 " Ruby/Rails stuff
 augroup railsfiletypes
 	" Clear old autocmds in group
-	autocmd! 
+	autocmd!
 	" autoindent with two spaces, always expand tabs
 	" autocmd FileType eruby set ai ts=4 sw=4 noexpandtab
 	" autocmd FileType ruby,yaml set ai sw=2 sts=2 expandtab
@@ -113,6 +113,12 @@ else
 	set background=dark
 endif
 
+" Clear trailing whitespace.
+map <Leader>c :%s/\s\+$//g
+
+" Surround mappings
+vmap <Leader>s <Plug>Vsurround
+vmap <Leader>S <Plug>VSurround
 
 "
 " Plugin Stuff
