@@ -1,3 +1,9 @@
+# This will print SQL output in script/console.
+unless Object.const_defined?('RAILS_DEFAULT_LOGGER')
+  require 'logger'
+  RAILS_DEFAULT_LOGGER = Logger.new(STDOUT)
+end
+
 # def method_missing(method, *args, &block)
 #   User.find_by_login(method.to_s) || super
 # end

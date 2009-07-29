@@ -1,7 +1,7 @@
 # Saftey
-alias cp='cp -iv'
-alias mv='mv -iv'
-alias rm='rm -iv'
+alias cp='cp -i'
+alias mv='mv -i'
+alias rm='rm -i'
 
 # cd shortcuts
 alias :='cd ../'
@@ -13,10 +13,14 @@ alias ::::='cd ../../../../'
 alias ra='rake'
 alias rt='rake --tasks'
 
+alias mra='macrake'
+alias mrt='macrake --tasks'
+
 # git stuff
 alias ga='git add'
 alias gb='git branch -a -v'
-alias gca='git commit -a'
+alias gco='git commit'
+alias gcoa='git commit -a'
 alias gd='git diff'
 alias gi='git status; echo; git branch -a -v'
 alias gm='git merge'

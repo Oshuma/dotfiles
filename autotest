@@ -1,4 +1,4 @@
-require 'autotest/redgreen'
+# require 'autotest/redgreen'
 
 FAILURE_IMAGE = '~/Pictures/Icons/autotest/failure.gif'
 PENDING_IMAGE = '~/Pictures/Icons/autotest/pending.gif'
