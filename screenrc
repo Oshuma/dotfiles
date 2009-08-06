@@ -12,6 +12,8 @@ defscrollback 5000
 # Dark colored.
 # hardstatus alwayslastline "%?%{wk}%-Lw%?%{yK}%n*%f %t%?(%u)%?%?%{wk}%+Lw%? %{gk}%=%c %{yk}%d/%M/%Y"
 # Red / white / blue.  America, fuck yea!
+# hardstatus alwayslastline "%{+b kr}[ %H ] %{kw} Load: %l %-=%  %{kg} [ %t ] %{kb} %c:%s  %m.%d.%Y "
+
 hardstatus alwayslastline "%{+b kr}[ %H ] %{kw} Load: %l %-=%  %{kg} [ %t ] %{kb} %c:%s  %m.%d.%Y "
 
 msgwait 1 # message timeout

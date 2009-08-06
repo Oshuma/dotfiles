@@ -9,6 +9,20 @@ alias ::='cd ../../'
 alias :::='cd ../../../'
 alias ::::='cd ../../../../'
 
+# General Alises
+alias l='ls -l'
+alias la='ls -a'
+alias lla='ls -la'
+alias lh='ls -lh'
+alias pfind='ps aux |grep '
+alias scr='screen -A -m -S '
+alias ssh='ssh -2'
+alias sr='screen -r '
+
+alias getip="curl -s http://checkip.dyndns.org | sed 's/[^0-9.]//g'"
+# alias getip="curl -s http://checkip.dyndns.org | sed 's/.*Current IP Address: \([0-9\.]*\).*/\1/g'"
+# alias getip="wget -O - http://checkip.dyndns.org | sed 's/[^0-9.]//g'"
+
 # Development Aliases
 alias ra='rake'
 alias rt='rake --tasks'
@@ -38,16 +52,6 @@ function gc {
 		git checkout $1
 	fi
 }
-
-# General Alises
-alias l='ls -l'
-alias la='ls -a'
-alias lla='ls -la'
-alias lh='ls -lh'
-alias pfind='ps aux |grep '
-alias scr='screen -A -m -S '
-alias ssh='ssh -2'
-alias sr='screen -r '
 
 #
 # ENV Variables
